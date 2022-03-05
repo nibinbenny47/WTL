@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="hacking.css">
+	<link rel="stylesheet" type="text/css" href="signup.css">
+</head>
+
+	
+
+<body background="pics/hi.jpg" style="background-size: cover; ">
+	
+
+
+	<form >
+		<div class="container">
+			<img src="pics/rajagirilogo.jpg" alt="" class="logo">
+			<div>
+			  <a href="#" class="fa fa-facebook"></a>
+			  <a href="#" class="fa fa-twitter"></a>
+			  <a href="#" class="fa fa-google"></a>
+			  <a href="#" class="fa fa-linkedin"></a>
+			</div>
+		  <div class="center">
+			<h1>RAJAGIRI HACKERS</h1>
+			<h5>Hackers are here.Where are you?</h5>
+			</div>
+			 
+		  </div>
+		  
+		<!-- header -->
+	<div class="navbar" >
+		<a href="hacktemplate.html"><i class="fa fa-fw fa-home" ></i>&nbsp&nbsp&nbsp home</a>
+		<a href="signup.html"><i class="fa fa-fw fa-"></i>&nbsp&nbsp&nbspsignup</a>
+		<a href="hackgallery.html"><i class="fa fa-fw fa-"></i>&nbsp&nbsp&nbspcourses</a>
+	
+		<div class="search-right">
+		<a  href="#"><i class="fa fa-fw fa-search"></i> &nbsp&nbsp&nbspsearch</a> </div>
+	  </div>
+	  <!-- form controls -->
+	  <section class="form-container">
+		<div class="form-control">
+			<label for="username" name="username">username</label>
+			<input id="txtusername" type="text" name="username" />
+			<small>Error Message</small>
+		</div>
+		<div class="form-control">
+			<label for="email" name="email">email</label>
+			<input id="txtemail" type="email" name="email" />
+			<small>Error Message</small>
+		  </div>
+		  <div class="form-control">
+			<label for="password" name="password">password</label>
+			<input id="txtpassword" type="password" name="password" />
+			<small id="pwdstrength" class="pwdstrength">Error Message</small>
+		  </div>
+		  <div class="form-control">
+			<label for="confirmPassword" name="confirmPassword">confirmPassword</label>
+			<input
+			  id="txtconfirmPassword"
+			  type="password"
+			  name="confirmPassword"
+			/>
+			<small>Error Message</small>
+		  </div>
+		  <div class="form-control">
+			<button>Register</button>
+		  </div>
+	
+		  
+	
+
+	  </section>
+	  <footer>
+		Designed and developed by <span > &nbspNibin Benny</span>	
+		
+	
+	
+	</footer>
+	<script>
+		let username = document.getElementById("txtusername");
+      let email = document.getElementById("txtemail");
+	  let password = document.getElementById("txtpassword");
+      let confirmPassword = document.getElementById("txtconfirmPassword");
+
+	  function validateInput() {
+        //----username validation-------
+        if (username.value.trim() === "") {
+          onError(username, "username cannot be empty");
+        } else {
+          onSuccess(username);
+        }
+        //-----email validation---------
+        if (email.value.trim() === "") {
+          onError(email, "email cannot be empty");
+        } else if (!isValidEmail(email.value.trim())) {
+          onError(email, "email not valid");
+        } else {
+          onSuccess(email);
+        }
+		 //----password validation--------
+		 if (password.value.trim() === "") {
+			onError(password, "password cannot be empty");
+		  }
+  
+		  //-----confirm password---------------
+		  if (confirmPassword.value.trim() === "") {
+			onError(confirmPassword, "value cannot be empty");
+		  } else if (password.value != confirmPassword.value) {
+			onError(confirmPassword, "not valid");
+		  } else {
+			onSuccess(confirmPassword);
+		  }
+	}
+	  //-----password validation----------------------------------
+
+      password.addEventListener("keyup", () => {
+        checkPassword();
+      });
+	   //----check password conditions-----------------------------------
+
+	   function checkPassword() {
+        if (password.value.length <= 5) {
+          onError(password, "password must have min 5 chars");
+        } else if (password.value.search(/[0-9]/) == -1) {
+          onError(password, "password must have a number");
+        } else if (password.value.search(/[A-Z]/) == -1) {
+          onError(password, "password must have one uppercase");
+        } else if (password.value.search(/[@#!$%^&*()_]/) == -1) {
+          onError(password, "password must have one special");
+        } else {
+          onSuccess(password);
+        }
+      }
+	   //----------error message------------------------------
+	   function onError(input, message) {
+        let parent = input.parentElement;
+        let messageElement = parent.querySelector("small");
+        messageElement.style.visibility = "visible";
+        messageElement.innerText = message;
+        //---add error class-------
+        parent.classList.add("error");
+        parent.classList.remove("success");
+      }
+  //------success message-------------------------------------
+  function onSuccess(input) {
+	let parent = input.parentElement;
+	let messageElement = parent.querySelector("small");
+	messageElement.style.visibility = "hidden";
+	messageElement.innerText = "";
+	//---add success class-----
+	parent.classList.add("success");
+	parent.classList.remove("error");
+  }
+    //------email regular expression-----
+	function isValidEmail(email) {
+        return /^([a-zA-Z0-9\.-]+)@([a-zA-Z0-9]+).([a-z]{2,8})(.[a-z]{2,8})$/.test(
+          email
+        );
+      }
+
+      //----click button to check validation-------------
+      document.querySelector("button").addEventListener("click", (event) => {
+        event.preventDefault();
+        validateInput();
+      });
+	</script>
+
+
+
+</body>
+</html>
