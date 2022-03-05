@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="UserRegistration.css" />
+  
+  </head>
+
+  <body>
+    
+
+    <div class="container">
+     
+      <div class="header">
+        <h2>create user</h2>
+      </div>
+      <form action="" class="form" name="form">
+        <div class="form-control">
+          <label for="username" name="username">username</label>
+          <input id="txtusername" type="text" name="username" />
+          <small>Error Message</small>
+        </div>
+        <div class="form-control">
+          <label for="email" name="email">email</label>
+          <input id="txtemail" type="email" name="email" />
+          <small>Error Message</small>
+        </div>
+
+        <div class="form-control">
+          <label for="photo" name="photo">photo</label>
+          <input id="txtphoto" type="file" name="photo" />
+          <small>Error Message</small>
+        </div>
+        <div class="form-control">
+          <label for="District" name="photo">District</label>
+          <select name="ddlDistrict" id="ddlDistrict">
+            <option value="select district">
+              --------------Select District-------------
+            </option>
+            <option value="">Ernakulam</option>
+            <option value="">Idukki</option>
+            <option value="">Kottayam</option>
+          </select>
+          <small>Error Message</small>
+        </div>
+
+        <div class="form-control">
+          <label for="password" name="password">password</label>
+          <input id="txtpassword" type="password" name="password" />
+          <small id="pwdstrength" class="pwdstrength">Error Message</small>
+        </div>
+        <div class="form-control">
+          <label for="confirmPassword" name="confirmPassword"
+            >confirmPassword</label
+          >
+          <input
+            id="txtconfirmPassword"
+            type="password"
+            name="confirmPassword"
+          />
+          <small>Error Message</small>
+        </div>
+        <div class="form-control">
+          <button>Register</button>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      let username = document.getElementById("txtusername");
+      let email = document.getElementById("txtemail");
+      let photo = document.getElementById("txtphoto");
+      var gender = document.form.gender;
+      let password = document.getElementById("txtpassword");
+      let confirmPassword = document.getElementById("txtconfirmPassword");
+      let ddlDistrict = document.getElementById("ddlDistrict");
+
+      var validExt = ["jpeg", "png", "jpg"];
+
+      function validateInput() {
+        //----username validation-------
+        if (username.value.trim() === "") {
+          onError(username, "username cannot be empty");
+        } else {
+          onSuccess(username);
+        }
+        //-----email validation---------
+        if (email.value.trim() === "") {
+          onError(email, "email cannot be empty");
+        } else if (!isValidEmail(email.value.trim())) {
+          onError(email, "email not valid");
+        } else {
+          onSuccess(email);
+        }
+        //-----photo validation------------
+        if (photo.value.trim() === "") {
+          onError(photo, "photo cannot be empty");
+        } else if (photo.value.trim() != "") {
+          var img_ext = photo.value.substring(photo.value.lastIndexOf(".") + 1);
+          var result = validExt.includes(img_ext);
+          if (result == false) {
+            onError(photo, "only jpg,jpeg and png allowed");
+          } else if (parseFloat(photo.size / (1024 * 1024)) >= 3) {
+            onError(photo, "size should not exceed 3mb");
+          } else {
+            onSuccess(photo);
+          }
+        }
+        //------dropdown valiation--------------------
+        if (ddlDistrict.value.trim() === "select district") {
+          onError(ddlDistrict, "Please select a district");
+        } else {
+          onSuccess(ddlDistrict);
+        }
+
+        //----password validation--------
+        if (password.value.trim() === "") {
+          onError(password, "password cannot be empty");
+        }
+
+        //-----confirm password---------------
+        if (confirmPassword.value.trim() === "") {
+          onError(confirmPassword, "value cannot be empty");
+        } else if (password.value != confirmPassword.value) {
+          onError(confirmPassword, "not valid");
+        } else {
+          onSuccess(confirmPassword);
+        }
+      }
+      //-----password validation----------------------------------
+
+      password.addEventListener("keyup", () => {
+        checkPassword();
+      });
+      //----check password conditions-----------------------------------
+
+      function checkPassword() {
+        if (password.value.length <= 5) {
+          onError(password, "password must have min 5 chars");
+        } else if (password.value.search(/[0-9]/) == -1) {
+          onError(password, "password must have a number");
+        } else if (password.value.search(/[A-Z]/) == -1) {
+          onError(password, "password must have one uppercase");
+        } else if (password.value.search(/[@#!$%^&*()_]/) == -1) {
+          onError(password, "password must have one special");
+        } else {
+          onSuccess(password);
+        }
+      }
+
+      //----------error message------------------------------
+      function onError(input, message) {
+        let parent = input.parentElement;
+        let messageElement = parent.querySelector("small");
+        messageElement.style.visibility = "visible";
+        messageElement.innerText = message;
+        //---add error class-------
+        parent.classList.add("error");
+        parent.classList.remove("success");
+      }
+
+      //------success message-------------------------------------
+      function onSuccess(input) {
+        let parent = input.parentElement;
+        let messageElement = parent.querySelector("small");
+        messageElement.style.visibility = "hidden";
+        messageElement.innerText = "";
+        //---add success class-----
+        parent.classList.add("success");
+        parent.classList.remove("error");
+      }
+
+      //------email regular expression-----
+      function isValidEmail(email) {
+        return /^([a-zA-Z0-9\.-]+)@([a-zA-Z0-9]+).([a-z]{2,8})(.[a-z]{2,8})$/.test(
+          email
+        );
+      }
+
+      //----click button to check validation-------------
+      document.querySelector("button").addEventListener("click", (event) => {
+        event.preventDefault();
+        validateInput();
+      });
+    </script>
+  </body>
+</html>
