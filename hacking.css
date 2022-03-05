@@ -1,0 +1,134 @@
+body {
+  margin: 0;
+  box-sizing: border-box;
+  size: 20px;
+}
+.fa {
+  padding: 15px;
+  font-size: 30px;
+  width: 5px;
+  text-align: center;
+  text-decoration: none;
+  margin: 10px 2px;
+}
+
+.logo {
+  float: right;
+  width: 80px;
+  margin-right: 80px;
+  mix-blend-mode: multiply;
+}
+
+.container {
+  margin: 0;
+  padding: 0%;
+  height: 100px;
+
+  background-color: #e7dbd9;
+}
+
+.center {
+  color: rgb(240, 33, 18);
+  font-family: Georgia, "Times New Roman", Times, serif;
+  letter-spacing: 2px;
+  /* margin: 0; */
+  padding-bottom: 30px;
+  position: absolute;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+}
+.center h5 {
+  color: black;
+  margin-left: 40px;
+}
+.fa-facebook {
+  color: black;
+  font-size: 18px;
+}
+
+.fa-twitter {
+  color: black;
+  font-size: 18px;
+}
+
+.fa-google {
+  color: black;
+  font-size: 18px;
+}
+
+.fa-linkedin {
+  color: black;
+  font-size: 18px;
+}
+
+.search-right {
+  float: right;
+}
+.navbar {
+  overflow: hidden;
+  background-color: rgb(160, 127, 127);
+  padding-left: 30px;
+  border-bottom: 2px solid white;
+  border-top: 2px solid white;
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 30px;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  color: red;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column1 {
+  background-image: url(pics/hack.jpg);
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+.column2 {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+
+.pre {
+  font-weight: bold;
+  font-size: 16px;
+  color: white;
+}
+
+footer {
+  text-align: center;
+  color: #3f2626;
+  font-family: cursive;
+  /* size: 60px; */
+  background-color: #ffe6e1;
+  height: 110px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 1px;
+  word-spacing: 1px;
+}
+
+footer span {
+  color: blue;
+  font-weight: bold;
+}
