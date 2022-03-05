@@ -1,0 +1,83 @@
+* {
+    box-sizing: border-box;
+  }
+  body {
+    /* background-color: cadetblue; */
+    background-image: url("nibinpic\\signup.jpg");
+    background-repeat: no-repeat;
+    /* overflow: hidden; */
+    background-size: cover;
+    /* background-size: cover; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+  .container {
+    width: 400px;
+    background-color: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .header {
+    background-color: lightpink;
+    padding: 10px 20px;
+  }
+  .form {
+    padding: 20px;
+  }
+  .form-control {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    position: relative;
+  }
+  
+  .form-control label {
+    display: inline-block;
+    margin-bottom: 3px;
+  }
+  .form-control input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 2px solid lightpink;
+  }
+  
+  .form-control.success input {
+    border: 2px solid green;
+  }
+  .form-control.error input {
+    border: 2px solid red;
+  }
+  .form-control small {
+    position: absolute;
+    margin: 3px;
+    visibility: hidden;
+    color: red;
+  }
+  
+  .form-control select {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 2px solid lightpink;
+  }
+  .form-control.success select {
+    border: 2px solid green;
+  }
+  .form-control.error select {
+    border: 2px solid red;
+  }
+  button {
+    background-color: lightpink;
+    color: #fff;
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+  }
+  
