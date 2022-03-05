@@ -1,0 +1,55 @@
+
+.form-container{
+	width: 400px;
+    background-color: rgb(239, 241, 245);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.form-control {
+	size: 18px;
+	margin-left: 50px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+
+  }
+
+  .form-control label {
+
+    margin-bottom: 3px;
+	
+  }
+  .form-control input {
+    display: block;
+    padding: 10px;
+
+    border-radius: 4px;
+    border: 2px solid rgb(13, 23, 79);
+  }
+
+  
+  .form-control.success input {
+    border: 2px solid green;
+  }
+  .form-control.error input {
+    border: 2px solid red;
+  }
+  .form-control small {
+    position: absolute;
+    margin: 3px;
+    visibility: hidden;
+    color: red;
+  }
+  
+  button {
+    background-color: rgb(238, 38, 68);
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+  }
+  button:hover{
+	  background-color: green;
+  }
+ 
