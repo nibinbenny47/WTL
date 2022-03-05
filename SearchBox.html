@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="SearchBox.css" />
+    <style>
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        border: 1px solid #e7e7e7;
+        background-color: #f3f3f3;
+      }
+      
+      li {
+        float: left;
+      }
+      
+      li a {
+        display: block;
+        color: #666;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+      
+      li a:hover:not(.active) {
+        background-color: #ddd;
+      }
+      
+      li a.active {
+        color: white;
+        background-color: #aa4604;
+      }
+      </style>
+  </head>
+  <body>
+    
+<ul>
+  <li><a class="active" href="#home">Home</a></li>
+  <li><a href="#news">News</a></li>
+  <li><a href="#contact">Contact</a></li>
+  <li><a href="#about">About</a></li>
+</ul>
+    <div class="hero">
+      <div class="searchBox">
+       
+        <div class="searchtext">
+            <div class="textplace">
+                <input
+                type="text"
+                name=""
+                id="searchBar"
+                class="searchBar"
+                placeholder="Search social media........ "
+                onkeyup="searchMedia()"
+              />
+            </div>
+            <div class="searchicon">
+          <img src="nibinpic\searchicon.png" alt="">
+
+            </div>
+          
+         
+        </div>
+
+        <ul id="options">
+          <li class="searchoption"><a href="#">facebook</a></li>
+          <li class="searchoption"><a href="#">whatsapp</a></li>
+          <li class="searchoption"><a href="#">instagram</a></li>
+          <li class="searchoption"><a href="#">telegram</a></li>
+          <li class="searchoption"><a href="#">youtube</a></li>
+          <li class="searchoption"><a href="#">linkedin</a></li>
+        </ul>
+      </div>
+    </div>
+    <script>
+      var searchoption = document.getElementsByClassName("searchoption");
+      var i;
+
+      //--------for making border bottom of each list white color-------------
+      for (i = 0; i < searchoption.length; i++) {
+        searchoption[i].style.borderBottom = "2px solid #edf0f5";
+      }
+
+      //----for search when keyup--------
+
+      //----we search each index of the search bar with list items .if matches it will display and 
+      //--all other becomes disappear-------------
+      const searchMedia = () => {
+        let filter = document.getElementById("searchBar").value.toUpperCase();
+        let ul = document.getElementById("options");
+        let li = document.getElementsByTagName("li");
+        for (var i = 0; i < li.length; i++) {
+          let a = li[i].getElementsByTagName("a")[0];
+
+          let textvalue = a.textContent || a.innerHTML;
+
+          if (textvalue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+          } else {
+            li[i].style.display = "none";
+          }
+        }
+      };
+    </script>
+  </body>
+</html>
