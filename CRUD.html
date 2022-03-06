@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="CRUD.css" />
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td>
+          <form
+            onsubmit="event.preventDefault();onFormSubmit();"
+            autocomplete="off"
+          >
+            <div>
+              <label for="">Full Name</label>
+              <input type="text" name="fullName" id="fullName" />
+            </div>
+            <div>
+              <label for="">Emp Code</label>
+              <input type="text" name="empCode" id="empCode" />
+            </div>
+            <div>
+              <label for="">Salary</label>
+              <input type="text" name="salary" id="salary" />
+            </div>
+            <div>
+              <label for="">City</label>
+              <input type="text" name="city" id="city" />
+            </div>
+            <div class="form-action-buttons">
+              <input type="submit" value="submit" />
+            </div>
+          </form>
+        </td>
+        <td>
+          <table class="list" id="employeeList">
+            <thead>
+              <tr>
+                <th>Full Name</th>
+                <th>Emp Code</th>
+                <th>Salary</th>
+                <th>City</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </td>
+      </tr>
+    </table>
+
+    <script>
+      var selectedRow = null;
+
+      function onFormSubmit() {
+        var formData = readFormData();
+
+        if (selectedRow === null) {
+          insertNewRecord(formData);
+        }
+        else{
+            updateRecord(formData);
+        }
+        resetForm();
+      }
+      function readFormData() {
+        //----form values are added to this variable called formData------
+        //---get all values of name,code,salary,city-----------
+        var formData = {};
+        formData["fullName"] = document.getElementById("fullName").value;
+        formData["empCode"] = document.getElementById("empCode").value;
+        formData["salary"] = document.getElementById("salary").value;
+        formData["city"] = document.getElementById("city").value;
+        return formData;
+      }
+      //------insert data-------------
+      function insertNewRecord(data) {
+        var table = document
+          .getElementById("employeeList")
+          .getElementsByTagName("tbody")[0];
+        var newRow = table.insertRow(table.length);
+        cell1 = newRow.insertCell(0);
+        cell1.innerHTML = data["fullName"]; //same as data.fullName
+        cell2 = newRow.insertCell(1);
+        cell2.innerHTML = data.empCode;
+        cell3 = newRow.insertCell(2);
+        cell3.innerHTML = data.salary;
+        cell4 = newRow.insertCell(3);
+        cell4.innerHTML = data.city;
+        cell5 = newRow.insertCell(4);
+        cell5.innerHTML = `<a onclick="onEdit(this)">Edit</a>
+                       <a onclick="onDelete(this)">Delete</a>`;
+      }
+      //--clear values---
+      const resetForm = () => {
+        document.getElementById("fullName").value = "";
+        document.getElementById("empCode").value = "";
+        document.getElementById("salary").value = "";
+        document.getElementById("city").value = "";
+        var selectedRow = null;
+      };
+      //----place values in form fields-----
+      const onEdit = (td) => {
+        selectedRow = td.parentElement.parentElement;
+        document.getElementById("fullName").value =selectedRow.cells[0].innerHTML;
+        document.getElementById("empCode").value =selectedRow.cells[1].innerHTML;
+        document.getElementById("salary").value =selectedRow.cells[2].innerHTML;
+        document.getElementById("city").value = selectedRow.cells[3].innerHTML;
+      };
+      //---update records--------------------
+      const updateRecord=(formData)=>{
+          selectedRow.cells[0].innerHTML=formData.fullName;
+          selectedRow.cells[1].innerHTML=formData.empCode;
+          selectedRow.cells[2].innerHTML=formData.salary;
+          selectedRow.cells[3].innerHTML=formData.city;
+
+      }
+      //----delete records-------
+      const onDelete=(td)=>{
+
+        if(confirm('Are you sure to delete this record?')){
+            row=td.parentElement.parentElement;
+            document.getElementById("employeeList").deleteRow(row.rowIndex);
+            resetForm();
+        }
+          
+
+      }
+
+
+
+    </script>
+  </body>
+</html>
