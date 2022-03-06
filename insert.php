@@ -25,7 +25,7 @@ mysql_select_db("db_counselling",$con);
 <head>
 	<title>district</title>
 	
-	<style>
+	<!-- <style>
 table {
   border-collapse: collapse;
   width: 100%;
@@ -77,7 +77,7 @@ input[type=text] {
 
 	text-align: right;
 
-}
+} -->
 </style>
 
 </head>
@@ -152,8 +152,6 @@ input[type=text] {
 <br>
 <br>
 <br>
-<?php
-include("Footer.php");
-?>
+
 </body>
 </html>
