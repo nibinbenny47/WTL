@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Selectbox.css">
+    <!DOCTYPE html>
+<html>
+    <style>
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          border: 1px solid #e7e7e7;
+          background-color: #f3f3f3;
+        }
+        
+        li {
+          float: left;
+        }
+        
+        li a {
+          display: block;
+          color: #666;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+        
+        li a:hover:not(.active) {
+          background-color: #ddd;
+        }
+        
+        li a.active {
+          color: white;
+          background-color: #aa4604;
+        }
+        </style>
+<head>
+
+</head>
+<body>
+   
+    <ul>
+        <li><a class="active" href="#home">Home</a></li>
+
+        <li><a href="selectbox.html">social media</a></li>
+      </ul>
+    
+
+    <div class="hero">
+  
+        <div class="selector">
+            <!-- for heading -->
+            <div id="selectfield">
+                <p id="selectText">select Social media </p>
+                <img src="../nibinpic/arrow.png" alt="" id="arrowicon" class="rotate">
+            </div>
+            <ul id="list" class="hide">
+                <li class="options">
+                    <img src="../nibinpic/facebook.jpg" alt="">
+                    <p>facebook</p>
+                </li>
+            
+            
+                <li class="options">
+                    <img src="../nibinpic/whatsapp.jpg" alt="">
+                    <p>Whatsapp</p>
+                </li>
+            
+                <li class="options">
+                    <img src="../nibinpic/instagram.jpg" alt="">
+                    <p>Instagram</p>
+                </li>
+           
+                <li class="options">
+                    <img src="../nibinpic/telegram.jpg" alt="">
+                    <p>Telegram</p>
+                </li>
+            
+                <li class="options">
+                    <img src="../nibinpic/linkedin.png" alt="">
+                    <p>Linkedin</p>
+                </li>
+            </ul>
+
+
+        </div>
+    </div>
+    <script>
+        var selectfield=document.getElementById("selectfield");
+        var selectText=document.getElementById("selectText");
+        var options=document.getElementsByClassName("options");
+        var list=document.getElementById("list");
+        var arrowicon=document.getElementById("arrowicon");
+        //---------for hiding and showing list options when toggle on selectlist--------
+        selectfield.onclick=function(){
+            list.classList.toggle("hide");
+            arrowicon.classList.toggle("rotate");
+        }
+
+        for(option of options){
+            option.onclick=function(){
+                selectText.innerHTML= this.textContent;
+                list.classList.toggle("hide");
+            arrowicon.classList.toggle("rotate");
+
+            }
+        }
+    </script>
+</body>
+</html>
